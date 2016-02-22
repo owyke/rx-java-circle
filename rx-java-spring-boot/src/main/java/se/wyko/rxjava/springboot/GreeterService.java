@@ -14,15 +14,14 @@ import javax.ws.rs.client.ClientBuilder;
 public class GreeterService {
     private final static Logger logger = LoggerFactory.getLogger(GreeterService.class);
 
-    public Observable<String> greetMe(String input) {
+    public String greetMe(String input) {
         logger.info("Service In");
-        Observable<String> response = Rx.newClient(RxObservableInvoker.class)
+        String response = ClientBuilder.newClient()
                 .target("http://localhost:7070/" + input)
                 .request()
-                .rx()
                 .get(String.class);
         logger.info("Service Out");
-        return Observable.just("Hello ").zipWith(response,(o1,o2) -> o1 + o2);
+        return "Hello " + response;
     }
 
     public Observable<String> ayncWorkIt() {
