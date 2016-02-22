@@ -10,6 +10,7 @@
     <version>1.0-SNAPSHOT</version>
     <modules>
         <module>RxJava Spring Boot</module>
+        <module>Slow rest api</module>
     </modules>
 
 
