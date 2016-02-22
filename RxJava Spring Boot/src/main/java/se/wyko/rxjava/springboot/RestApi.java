@@ -48,11 +48,7 @@ public class RestApi {
     @ResponseBody
     Observable<String> asyncRestCall() {
         logger.info("In");
-        Observable<String> response = Rx.newClient(RxObservableInvoker.class)
-                .target("http://localhost:7070")
-                .request()
-                .rx()
-                .get(String.class);
+        Observable<String> response = service.ayncWorkIt();
         logger.info("Out");
         return response;
     }
@@ -61,10 +57,7 @@ public class RestApi {
     @ResponseBody
     String syncRestCall() {
         logger.info("In");
-        String response = ClientBuilder.newClient()
-                .target("http://localhost:7070")
-                .request()
-                .get(String.class);
+        String response = service.workIt();
         logger.info("Out");
         return response;
     }
