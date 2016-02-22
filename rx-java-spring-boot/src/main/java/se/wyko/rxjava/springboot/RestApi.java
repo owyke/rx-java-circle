@@ -11,6 +11,7 @@ import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.ResponseBody;
+import rx.Observable;
 
 
 @Controller
@@ -26,9 +27,10 @@ public class RestApi {
 
     @RequestMapping("/{input}")
     @ResponseBody
-    String syncRestCall(@PathVariable("input") String input) {
+    Observable<String> syncRestCall(@PathVariable("input") String input) {
         logger.info("In");
-        String response = service.greetMe(input);
+        Observable<String> response = service.greetMe(input);
+
         logger.info("Out");
         return response;
     }
