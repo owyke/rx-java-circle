@@ -10,8 +10,9 @@
     </parent>
 
     <modelVersion>4.0.0</modelVersion>
-
+    <groupId>se.wyko</groupId>
     <artifactId>slow-rest-api</artifactId>
+    <version>1.0-SNAPSHOT</version>
     <build>
         <plugins>
             <plugin>
